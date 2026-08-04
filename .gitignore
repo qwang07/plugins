@@ -1,0 +1,10 @@
+.DS_Store
+*.log
+
+# 开发工具痕迹，非可分发物
+.claude/
+.serena/
+.codegraph/
+.gitnexus
+.conductor/
+AGENTS.md
