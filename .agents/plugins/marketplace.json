@@ -1,0 +1,51 @@
+{
+  "name": "qwang07",
+  "interface": {
+    "displayName": "qwang07's Plugins"
+  },
+  "plugins": [
+    {
+      "name": "wecom",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/qwang07/wecom-mcp",
+        "path": "plugins/wecom"
+      },
+      "policy": {
+        "installation": "AVAILABLE"
+      },
+      "category": "Productivity",
+      "description": "79 WeCom tools, 8 resources, and 3 prompts — Contact, Approval, Drive, and Doc/Smartsheet/Form modules over MCP. Reads WECOM_CORP_ID / WECOM_CORP_SECRET / WECOM_ADMIN_USERID from the host environment.",
+      "homepage": "https://github.com/qwang07/wecom-mcp#readme",
+      "repository": "https://github.com/qwang07/wecom-mcp",
+      "license": "MIT",
+      "keywords": [
+        "wecom",
+        "qiyeweixin",
+        "wework",
+        "approval",
+        "drive",
+        "smartsheet",
+        "form",
+        "contact"
+      ]
+    },
+    {
+      "name": "northstar",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/qwang07/northstar",
+        "path": "plugins/northstar"
+      },
+      "policy": {
+        "installation": "AVAILABLE"
+      },
+      "category": "Developer Tools",
+      "description": "契约驱动的开发回路：brainstorming 出 README 契约（唯一写入口）→ write-test 派生守护物 → audit 零上下文评审 → implement 令红变绿；diagnose 缺陷归因入口，code-review 收尾质量刀。",
+      "homepage": "https://github.com/qwang07/northstar#readme",
+      "repository": "https://github.com/qwang07/northstar",
+      "license": "MIT",
+      "keywords": ["contract-first", "readme-as-ssot", "tdd", "workflow"]
+    }
+  ]
+}

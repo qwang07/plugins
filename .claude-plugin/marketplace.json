@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "qwang07",
+  "description": "qwang07 的插件集：WeCom MCP 工具、Northstar 契约驱动开发回路",
+  "owner": {
+    "name": "qwang07",
+    "email": "github@quan-wang.me",
+    "url": "https://github.com/qwang07"
+  },
+  "plugins": [
+    {
+      "name": "wecom",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/qwang07/wecom-mcp",
+        "path": "plugins/wecom"
+      },
+      "displayName": "WeCom (企业微信)",
+      "description": "79 WeCom tools, 8 resources, and 3 prompts — Contact, Approval, Drive, and Doc/Smartsheet/Form modules over MCP. Prompts for corp credentials on enable; the secret goes to the system keychain.",
+      "homepage": "https://github.com/qwang07/wecom-mcp#readme",
+      "repository": "https://github.com/qwang07/wecom-mcp",
+      "license": "MIT",
+      "category": "productivity",
+      "keywords": [
+        "wecom",
+        "qiyeweixin",
+        "wework",
+        "approval",
+        "drive",
+        "smartsheet",
+        "form",
+        "contact"
+      ]
+    },
+    {
+      "name": "northstar",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/qwang07/northstar",
+        "path": "plugins/northstar"
+      },
+      "displayName": "Northstar",
+      "description": "契约驱动的开发回路：brainstorming 出 README 契约（唯一写入口）→ write-test 派生守护物 → audit 零上下文评审 → implement 令红变绿；diagnose 缺陷归因入口，code-review 收尾质量刀。含六个执行子代理，零外部依赖。",
+      "homepage": "https://github.com/qwang07/northstar#readme",
+      "repository": "https://github.com/qwang07/northstar",
+      "license": "MIT",
+      "category": "development",
+      "keywords": ["contract-first", "readme-as-ssot", "tdd", "workflow"]
+    }
+  ]
+}
