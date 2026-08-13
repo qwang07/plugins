@@ -40,7 +40,7 @@
         "path": "plugins/northstar"
       },
       "displayName": "Northstar",
-      "description": "契约驱动的开发回路：brainstorming 出 README 契约（唯一写入口）→ write-test 派生守护物 → audit 零上下文评审 → implement 令红变绿；diagnose 缺陷归因入口，code-review 收尾质量刀。含六个执行子代理，零外部依赖。",
+      "description": "契约驱动的开发回路，九技能零外部依赖：discover 确认目标 → brainstorming 出 README 契约（唯一写入口）→ write-test 派生守护物 → audit 零上下文评审（硬门）→ implement 令红变绿 → simplify + code-review 收尾链；diagnose 缺陷归因、deliver 交付核验为独立入口。README = 唯一的、无时间的目标态真理，测试是其可执行投影；不分发 agent 定义文件，执行者人格按教条现场组装。",
       "homepage": "https://github.com/qwang07/northstar#readme",
       "repository": "https://github.com/qwang07/northstar",
       "license": "MIT",

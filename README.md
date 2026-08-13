@@ -27,7 +27,7 @@ Or run `/plugins` in the Codex CLI and install from the browser.
 | Plugin | What it does | Source |
 |---|---|---|
 | `wecom` | 79 WeCom (企业微信) tools, 8 resources, 3 prompts — Contact, Approval, Drive, Doc/Smartsheet/Form over MCP | [qwang07/wecom-mcp](https://github.com/qwang07/wecom-mcp) |
-| `northstar` | 契约驱动的开发回路：brainstorming → write-test → audit → implement，外加 diagnose 与 code-review | [qwang07/northstar](https://github.com/qwang07/northstar) |
+| `northstar` | 契约驱动的开发回路，九技能：discover → brainstorming → write-test → audit → implement → simplify → code-review，外加 diagnose 与 deliver 两个独立入口 | [qwang07/northstar](https://github.com/qwang07/northstar) |
 
 ### Credentials
 
