@@ -40,12 +40,17 @@
         "path": "plugins/northstar"
       },
       "displayName": "Northstar",
-      "description": "契约驱动的开发回路，九技能零外部依赖：discover 确认目标 → brainstorming 出 README 契约（唯一写入口）→ write-test 派生守护物 → audit 零上下文评审（硬门）→ implement 令红变绿 → simplify + code-review 收尾链；diagnose 缺陷归因、deliver 交付核验为独立入口。README = 唯一的、无时间的目标态真理，测试是其可执行投影；不分发 agent 定义文件，执行者人格按教条现场组装。",
+      "description": "契约驱动的开发回路，六技能零外部依赖：contract 把讨论落成 README 契约（唯一写入口，后置整理）→ write-test 派生守护物（裁决在主会话，派生段零上下文派发）→ audit 零上下文评审（三检查点，硬门）→ 实施（裸代理，受实施家规约束，不设技能）→ simplify + code-review 收尾链（契约合规在此裁决）；diagnose 缺陷归因为独立入口。README = 唯一的、无时间的目标态真理，测试是其可执行投影；技能只立在模型解决不了的缺口上；不分发 agent 定义文件，执行者人格按教条现场组装。",
       "homepage": "https://github.com/qwang07/northstar#readme",
       "repository": "https://github.com/qwang07/northstar",
       "license": "MIT",
       "category": "development",
-      "keywords": ["contract-first", "readme-as-ssot", "tdd", "workflow"]
+      "keywords": [
+        "contract-first",
+        "readme-as-ssot",
+        "tdd",
+        "workflow"
+      ]
     }
   ]
 }
