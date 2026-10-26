@@ -1,0 +1,21 @@
+{
+  "name": "qwang07",
+  "description": "qwang07 的门客插件：待办",
+  "plugins": [
+    {
+      "name": "todo",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/qwang07/retinue",
+        "path": "plugins/todo"
+      },
+      "displayName": "待办",
+      "description": "门客做多步的活时列出待办清单：侧边面板画清单，名录状态位显示进度。",
+      "repository": "https://github.com/qwang07/retinue",
+      "keywords": [
+        "todo",
+        "retinue"
+      ]
+    }
+  ]
+}

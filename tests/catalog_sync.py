@@ -1,9 +1,13 @@
 #!/usr/bin/env python3
-"""编目同步测试——两份 marketplace.json 与 README 之间的跨文档引用完整性。
+"""编目同步测试——三份 marketplace.json 与 README 之间的跨文档引用完整性。
 
 为什么这里用文本逐字比对：本仓的契约本身就是**词法契约**。Claude Code 只读
 .claude-plugin/marketplace.json；Codex 读 .agents/plugins/marketplace.json 且读到
 就停，永远看不到前者——两份必须各自完整，且共享字段逐字一致。量具是文本，正确。
+
+门客（retinue）只读 .retinue-plugin/marketplace.json，只认 git-subdir 来源，且只列
+带门客清单（.retinue-plugin/plugin.json）的插件——所以它的插件集合可以与前两份不同。
+同名插件在三份里共享字段逐字一致；只在门客编目里的插件不参与 C1–C4。
 
 反过来划清边界：「编目文案是否如实描述 northstar 实际的技能集合」是**兑现类契约**，
 跨仓且需联网，不在本文件——**勿在此处用 grep 关键词去代理它**，那会变成变更探测器。
@@ -18,6 +22,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 CLAUDE = ROOT / ".claude-plugin/marketplace.json"
 CODEX = ROOT / ".agents/plugins/marketplace.json"
+RETINUE = ROOT / ".retinue-plugin/marketplace.json"
 README = ROOT / "README.md"
 
 # 共享字段：两份编目必须逐字相同（手工同步漏改一份 = 这里红）
@@ -32,6 +37,8 @@ ONLY_CLAUDE = {"displayName"}
 ONLY_CODEX = {"policy"}
 # 两侧都须有、但取值域各自不同，故不比对内容
 DIVERGENT = {"category"}
+# 门客编目条目允许的字段：共享字段 + 名字与显示名（门客读 displayName）
+RETINUE_FIELDS = set(SHARED) | {"name", "displayName"}
 
 failures = []
 
@@ -50,13 +57,14 @@ def load(p):
         return None
 
 
-c, x = load(CLAUDE), load(CODEX)
-if c is None or x is None:
+c, x, r = load(CLAUDE), load(CODEX), load(RETINUE)
+if c is None or x is None or r is None:
     print("\n编目不可解析，后续断言无从谈起")
     sys.exit(1)
 
 cp = {p["name"]: p for p in c.get("plugins", [])}
 xp = {p["name"]: p for p in x.get("plugins", [])}
+rp = {p["name"]: p for p in r.get("plugins", [])}
 both = sorted(set(cp) & set(xp))
 
 # C1 插件名集合相同——一份加了插件另一份忘加，该客户端就永远看不到它
@@ -105,11 +113,29 @@ for n in both:
     check(f"C4b {n} 专属字段未串侧", not misplaced,
           f"{misplaced} 出现在了不属于它的那一侧——两侧都有时 C4 的对称差集为空，只能靠这条")
 
-# C5 README 的 Plugins 表格是第三处同步点：覆盖须与编目双向相等
+# R1 门客只认 git-subdir 来源（相对路径只用于应用内置的编目）
+for n in sorted(rp):
+    src = rp[n].get("source")
+    ok = isinstance(src, dict) and src.get("source") == "git-subdir" and bool(src.get("url"))
+    check(f"R1 {n} 门客编目来源是 git-subdir", ok, f"source 为 {src!r}")
+
+# R2 与另两份同名的插件：共享字段逐字一致（description 例外同 C2）
+for n in sorted(set(rp) & set(cp)):
+    fields = [f for f in SHARED if not (f == "description" and n in DESC_MAY_DIFFER)]
+    diff = [f for f in fields if rp[n].get(f) != cp[n].get(f)]
+    check(f"R2 {n} 门客编目与 Claude 编目共享字段逐字一致", not diff, f"不一致字段 {diff}")
+
+# R3 门客编目不带别的客户端的专属字段（policy、category 之类）
+for n in sorted(rp):
+    stray = sorted(set(rp[n]) - RETINUE_FIELDS)
+    check(f"R3 {n} 门客编目字段在允许清单内", not stray, f"越界字段 {stray}")
+
+# C5 README 的 Plugins 表格是又一处同步点：覆盖须与三份编目的并集双向相等
 rd = README.read_text(encoding="utf-8") if README.exists() else ""
 listed = set(re.findall(r"^\|\s*`([a-z0-9_-]+)`\s*\|", rd, re.M))
-check("C5 README 表格覆盖全部插件", set(cp) <= listed, f"README 未列出 {sorted(set(cp) - listed)}")
-check("C5 README 无编目外的插件", listed <= set(cp), f"README 多出 {sorted(listed - set(cp))}")
+every = set(cp) | set(xp) | set(rp)
+check("C5 README 表格覆盖全部插件", every <= listed, f"README 未列出 {sorted(every - listed)}")
+check("C5 README 无编目外的插件", listed <= every, f"README 多出 {sorted(listed - every)}")
 
 print(f"\n{'全绿' if not failures else f'{len(failures)} 红'}：共 {len(failures)} 失败")
 sys.exit(1 if failures else 0)
