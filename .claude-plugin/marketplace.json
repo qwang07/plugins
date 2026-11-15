@@ -35,8 +35,9 @@
     {
       "name": "archify",
       "source": {
-        "source": "url",
+        "source": "git-subdir",
         "url": "https://github.com/qwang07/archify.git",
+        "path": "plugins/archify",
         "ref": "plugin"
       },
       "description": "Interactive architecture, workflow and sequence diagrams, plus source-backed one-page explainers. Unmodified upstream skill, automatically synchronized daily.",

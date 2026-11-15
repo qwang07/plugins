@@ -32,7 +32,7 @@ In 门客, open 设置 · 插件 · 市场, add the catalog `https://github.com/
 |---|---|---|
 | `wecom` | 79 WeCom (企业微信) tools, 8 resources, 3 prompts — Contact, Approval, Drive, Doc/Smartsheet/Form over MCP | [qwang07/wecom-mcp](https://github.com/qwang07/wecom-mcp) |
 | `todo` | 门客的待办清单：门客做多步的活时列出清单，侧边面板画清单，名录状态位显示进度（门客 only） | [qwang07/retinue](https://github.com/qwang07/retinue/tree/main/plugins/todo) |
-| `archify` | Interactive architecture and workflow diagrams, sequence diagrams and source-backed explainers; upstream skill synced daily | [qwang07/archify](https://github.com/qwang07/archify/tree/plugin) |
+| `archify` | Interactive architecture and workflow diagrams, sequence diagrams and source-backed explainers; upstream skill synced daily | [qwang07/archify](https://github.com/qwang07/archify/tree/plugin/plugins/archify) |
 
 ### Credentials
 
@@ -41,7 +41,7 @@ In 门客, open 设置 · 插件 · 市场, add the catalog `https://github.com/
 - **Claude Code** prompts you when the plugin is enabled; the secret is stored in the system keychain, not in `settings.json`.
 - **Codex** forwards `WECOM_CORP_ID`, `WECOM_CORP_SECRET`, and `WECOM_ADMIN_USERID` from your shell environment — export them before starting Codex.
 
-`archify` needs no credentials; its CLI requires Node.js 18+. The generated `plugin` branch tracks upstream daily at 04:23 Asia/Shanghai (GitHub schedules may be delayed). Each package records its upstream commit in `upstream.json`. Refresh / update the installed plugin to receive changes; [packaging details](https://github.com/qwang07/archify/tree/packaging/.github/plugin).
+`archify` needs no credentials; its CLI requires Node.js 18+. The generated `plugin` branch tracks upstream daily at 04:23 Asia/Shanghai (GitHub schedules may be delayed). The catalog uses `git-subdir` with `path: plugins/archify` so clients can use blob-filtered sparse checkout rather than clone the fork with all file history. Each package records its upstream commit in `plugins/archify/upstream.json`. Refresh / update the installed plugin to receive changes; [packaging details](https://github.com/qwang07/archify/tree/packaging/.github/plugin).
 
 ## Why three catalog files
 
