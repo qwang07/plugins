@@ -1,6 +1,6 @@
 # qwang07's plugins
 
-A plugin marketplace for [Claude Code](https://claude.com/claude-code), [Codex](https://developers.openai.com/codex), and [门客 (retinue)](https://github.com/qwang07/retinue). This repo is only the catalog — each plugin lives in its own repository and is pulled in by `git-subdir`.
+A plugin marketplace for [Claude Code](https://claude.com/claude-code), [Codex](https://developers.openai.com/codex), and [门客 (retinue)](https://github.com/qwang07/retinue). This repo is only the catalog — each plugin lives in its own repository and is pulled in through a remote Git source (`git-subdir` or repository-root `url`).
 
 ## Install
 
@@ -9,7 +9,7 @@ A plugin marketplace for [Claude Code](https://claude.com/claude-code), [Codex](
 ```
 /plugin marketplace add qwang07/plugins
 /plugin install wecom@qwang07
-/plugin install northstar@qwang07
+/plugin install archify@qwang07
 ```
 
 ### Codex
@@ -17,7 +17,7 @@ A plugin marketplace for [Claude Code](https://claude.com/claude-code), [Codex](
 ```
 codex plugin marketplace add qwang07/plugins
 codex plugin add wecom@qwang07
-codex plugin add northstar@qwang07
+codex plugin add archify@qwang07
 ```
 
 Or run `/plugins` in the Codex CLI and install from the browser.
@@ -32,7 +32,7 @@ In 门客, open 设置 · 插件 · 市场, add the catalog `https://github.com/
 |---|---|---|
 | `wecom` | 79 WeCom (企业微信) tools, 8 resources, 3 prompts — Contact, Approval, Drive, Doc/Smartsheet/Form over MCP | [qwang07/wecom-mcp](https://github.com/qwang07/wecom-mcp) |
 | `todo` | 门客的待办清单：门客做多步的活时列出清单，侧边面板画清单，名录状态位显示进度（门客 only） | [qwang07/retinue](https://github.com/qwang07/retinue/tree/main/plugins/todo) |
-| `northstar` | 契约驱动的开发回路，六技能：contract → write-test → audit → 实施（裸代理）→ simplify → code-review，外加 diagnose 缺陷归因独立入口 | [qwang07/northstar](https://github.com/qwang07/northstar) |
+| `archify` | Interactive architecture and workflow diagrams, sequence diagrams and source-backed explainers; upstream skill synced daily | [qwang07/archify](https://github.com/qwang07/archify/tree/plugin) |
 
 ### Credentials
 
@@ -41,7 +41,7 @@ In 门客, open 设置 · 插件 · 市场, add the catalog `https://github.com/
 - **Claude Code** prompts you when the plugin is enabled; the secret is stored in the system keychain, not in `settings.json`.
 - **Codex** forwards `WECOM_CORP_ID`, `WECOM_CORP_SECRET`, and `WECOM_ADMIN_USERID` from your shell environment — export them before starting Codex.
 
-`northstar` needs no credentials.
+`archify` needs no credentials; its CLI requires Node.js 18+. The generated `plugin` branch tracks upstream daily at 04:23 Asia/Shanghai (GitHub schedules may be delayed). Each package records its upstream commit in `upstream.json`. Refresh / update the installed plugin to receive changes; [packaging details](https://github.com/qwang07/archify/tree/packaging/.github/plugin).
 
 ## Why three catalog files
 

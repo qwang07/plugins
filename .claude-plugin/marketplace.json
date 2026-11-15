@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
   "name": "qwang07",
-  "description": "qwang07 的插件集：WeCom MCP 工具、Northstar 契约驱动开发回路",
+  "description": "qwang07 的插件集：WeCom MCP 工具、Archify 交互架构与流程图",
   "owner": {
     "name": "qwang07",
     "email": "github@quan-wang.me",
@@ -33,24 +33,26 @@
       ]
     },
     {
-      "name": "northstar",
+      "name": "archify",
       "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/qwang07/northstar",
-        "path": "plugins/northstar"
+        "source": "url",
+        "url": "https://github.com/qwang07/archify.git",
+        "ref": "plugin"
       },
-      "displayName": "Northstar",
-      "description": "契约驱动的开发回路，六技能零外部依赖：contract 把讨论落成 README 契约（唯一写入口，后置整理）→ write-test 派生守护物（裁决在主会话，派生段零上下文派发）→ audit 零上下文评审（三检查点，硬门）→ 实施（裸代理，受实施家规约束，不设技能）→ simplify + code-review 收尾链（契约合规在此裁决）；diagnose 缺陷归因为独立入口。README = 唯一的、无时间的目标态真理，测试是其可执行投影；技能只立在模型解决不了的缺口上；不分发 agent 定义文件，执行者人格按教条现场组装。",
-      "homepage": "https://github.com/qwang07/northstar#readme",
-      "repository": "https://github.com/qwang07/northstar",
-      "license": "MIT",
-      "category": "development",
+      "description": "Interactive architecture, workflow and sequence diagrams, plus source-backed one-page explainers. Unmodified upstream skill, automatically synchronized daily.",
+      "homepage": "https://github.com/tt-a1i/archify",
+      "repository": "https://github.com/qwang07/archify",
+      "license": "Apache-2.0",
       "keywords": [
-        "contract-first",
-        "readme-as-ssot",
-        "tdd",
-        "workflow"
-      ]
+        "architecture",
+        "diagrams",
+        "workflow",
+        "sequence",
+        "codebase",
+        "visualization"
+      ],
+      "displayName": "Archify",
+      "category": "development"
     }
   ]
 }
