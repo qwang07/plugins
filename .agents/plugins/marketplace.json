@@ -58,8 +58,10 @@
     {
       "name": "milestone",
       "source": {
-        "source": "local",
-        "path": "./plugins/milestone/codex"
+        "source": "git-subdir",
+        "url": "https://github.com/qwang07/milestone-mod.git",
+        "path": "plugins/milestone/codex",
+        "ref": "plugin"
       },
       "policy": {
         "installation": "AVAILABLE"
