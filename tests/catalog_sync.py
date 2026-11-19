@@ -67,8 +67,10 @@ xp = {p["name"]: p for p in x.get("plugins", [])}
 rp = {p["name"]: p for p in r.get("plugins", [])}
 both = sorted(set(cp) & set(xp))
 
-# C1 插件名集合相同——一份加了插件另一份忘加，该客户端就永远看不到它
-check("C1 两份编目插件名集合相同", set(cp) == set(xp),
+# C1 保持共享插件同步，并显式列出只面向 Codex 的条目。
+CODEX_ONLY = {"milestone"}
+check("C1 Claude 和 Codex 编目符合客户端支持范围",
+      set(cp) <= set(xp) and set(xp) - set(cp) == CODEX_ONLY,
       f"仅 Claude 侧有 {sorted(set(cp) - set(xp))}；仅 Codex 侧有 {sorted(set(xp) - set(cp))}")
 
 def sentences(s):

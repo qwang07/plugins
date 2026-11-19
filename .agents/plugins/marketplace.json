@@ -54,6 +54,18 @@
         "installation": "AVAILABLE"
       },
       "category": "Developer Tools"
+    },
+    {
+      "name": "milestone",
+      "source": {
+        "source": "local",
+        "path": "./plugins/milestone/codex"
+      },
+      "policy": {
+        "installation": "AVAILABLE"
+      },
+      "category": "Productivity",
+      "description": "Project goals, deliverables, and live progress in an MCP Apps panel."
     }
   ]
 }
