@@ -1,0 +1,57 @@
+name: Sync & Check Plugins
+
+on:
+  schedule:
+    # Daily at 05:00 Asia/Shanghai (21:00 UTC)
+    - cron: "0 21 * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-plugins-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  catalog-and-sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Sync CodeGraph version from npm
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        id: sync
+        run: python3 scripts/sync_plugins.py --sync-codegraph
+
+      - name: Validate catalog sync contract
+        run: python3 tests/catalog_sync.py
+
+      - name: Validate plugin JSON manifests
+        run: |
+          python3 -c "
+          import json, pathlib
+          for p in sorted(pathlib.Path('plugins').rglob('*.json')):
+              json.loads(p.read_text(encoding='utf-8'))
+              print('VALID', p)
+          "
+
+      - name: Check upstream plugin sources and versions
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 scripts/sync_plugins.py --check-upstream
+
+      - name: Commit and push CodeGraph version bump
+        if: >-
+          (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch') &&
+          steps.sync.outputs.codegraph_changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add plugins/codegraph
+          git commit -m "chore(codegraph): bump version to ${{ steps.sync.outputs.codegraph_version }}"
+          git push origin HEAD:main
