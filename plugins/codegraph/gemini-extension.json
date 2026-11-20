@@ -1,6 +1,6 @@
 {
   "name": "codegraph",
-  "version": "1.0.0",
+  "version": "1.6.3",
   "description": "Local-first semantic code intelligence over MCP (@colbymchenry/codegraph@latest) — surgical context, call paths, and blast-radius analysis across 30+ languages.",
   "contextFileName": "rules/AGENTS.md",
   "mcpServers": {

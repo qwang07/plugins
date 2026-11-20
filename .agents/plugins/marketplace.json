@@ -92,6 +92,30 @@
         "installation": "AVAILABLE"
       },
       "category": "Developer Tools"
+    },
+    {
+      "name": "sealos",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/labring/sealos-skills.git",
+        "path": "plugins/sealos"
+      },
+      "description": "Deploy and operate Sealos Cloud apps through one interactive skill and a Brain managed workflow — deploy from the template store, Docker images, or source code, and manage databases, object storage, domains, and logs.",
+      "homepage": "https://github.com/labring/sealos-skills",
+      "repository": "https://github.com/labring/sealos-skills",
+      "license": "MIT",
+      "keywords": [
+        "sealos",
+        "deployment",
+        "kubernetes",
+        "skills",
+        "database",
+        "object-storage"
+      ],
+      "policy": {
+        "installation": "AVAILABLE"
+      },
+      "category": "Coding"
     }
   ]
 }

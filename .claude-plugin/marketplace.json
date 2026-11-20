@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
   "name": "qwang07",
-  "description": "qwang07 的插件集：WeCom MCP 工具、Archify 交互架构与流程图、CodeGraph 本地语义代码图谱",
+  "description": "qwang07 的插件集：WeCom MCP 工具、Archify 交互架构与流程图、CodeGraph 本地语义代码图谱、Sealos Cloud 部署运维",
   "owner": {
     "name": "qwang07",
     "email": "github@quan-wang.me",
@@ -76,6 +76,28 @@
       ],
       "displayName": "CodeGraph",
       "category": "development"
+    },
+    {
+      "name": "sealos",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/labring/sealos-skills.git",
+        "path": "plugins/sealos"
+      },
+      "description": "Deploy and operate Sealos Cloud apps through one interactive skill and a Brain managed workflow — deploy from the template store, Docker images, or source code, and manage databases, object storage, domains, and logs.",
+      "homepage": "https://github.com/labring/sealos-skills",
+      "repository": "https://github.com/labring/sealos-skills",
+      "license": "MIT",
+      "keywords": [
+        "sealos",
+        "deployment",
+        "kubernetes",
+        "skills",
+        "database",
+        "object-storage"
+      ],
+      "displayName": "Sealos",
+      "category": "deployment"
     }
   ]
 }

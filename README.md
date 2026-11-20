@@ -11,6 +11,7 @@ A plugin marketplace for [Claude Code](https://claude.com/claude-code), [Codex](
 /plugin install wecom@qwang07
 /plugin install archify@qwang07
 /plugin install codegraph@qwang07
+/plugin install sealos@qwang07
 ```
 
 ### Codex
@@ -21,6 +22,7 @@ codex plugin add wecom@qwang07
 codex plugin add archify@qwang07
 codex plugin add milestone@qwang07
 codex plugin add codegraph@qwang07
+codex plugin add sealos@qwang07
 ```
 
 Or run `/plugins` in the Codex CLI and install from the browser.
@@ -59,6 +61,7 @@ In 门客, open 设置 · 插件 · 市场, add the catalog `https://github.com/
 | `archify` | Interactive architecture and workflow diagrams, sequence diagrams and source-backed explainers; upstream skill synced daily | [qwang07/archify](https://github.com/qwang07/archify/tree/plugin/plugins/archify) |
 | `milestone` | Project goals, deliverables, and live progress for Codex and Antigravity | [Milestone packages](https://github.com/qwang07/milestone-mod/tree/plugin/plugins/milestone) |
 | `codegraph` | Local-first semantic code intelligence over MCP (`@colbymchenry/codegraph@latest`) plus CLI index/impact skill for Claude Code, Codex, Antigravity, and Gemini CLI | [plugins/codegraph](https://github.com/qwang07/plugins/tree/main/plugins/codegraph) |
+| `sealos` | Deploy and operate Sealos Cloud apps, managed databases, and S3-compatible object storage via interactive and Brain managed skills | [labring/sealos-skills](https://github.com/labring/sealos-skills/tree/main/plugins/sealos) |
 
 ### Credentials
 
@@ -70,6 +73,8 @@ In 门客, open 设置 · 插件 · 市场, add the catalog `https://github.com/
 `archify` needs no credentials; its CLI requires Node.js 18+. The generated `plugin` branch tracks upstream daily at 04:23 Asia/Shanghai (GitHub schedules may be delayed). The catalog uses `git-subdir` with `path: plugins/archify` so clients can use blob-filtered sparse checkout rather than clone the fork with all file history. Each package records its upstream commit in `plugins/archify/upstream.json`. Refresh / update the installed plugin to receive changes; [packaging details](https://github.com/qwang07/archify/tree/packaging/.github/plugin).
 
 `codegraph` needs no credentials; it requires Node.js (`npx`) and runs `npx -y @colbymchenry/codegraph@latest serve --mcp` so the MCP server tracks the latest upstream npm release without version pinning. Run `npx -y @colbymchenry/codegraph@latest init` inside each project you want indexed.
+
+`sealos` tracks [`labring/sealos-skills`](https://github.com/labring/sealos-skills) directly via `git-subdir` (`plugins/sealos`), using the upstream repository's own `plugin.json` version. Authentication uses `~/.sealos/kubeconfig` via the `use-sealos` sign-in flow.
 
 ## Why three catalog files
 
