@@ -33,7 +33,6 @@ CODEGRAPH_MANIFESTS = [
 CATALOGS = [
     ROOT / ".claude-plugin/marketplace.json",
     ROOT / ".agents/plugins/marketplace.json",
-    ROOT / ".retinue-plugin/marketplace.json",
 ]
 MANIFEST_CANDIDATES = [
     ".codex-plugin/plugin.json",
