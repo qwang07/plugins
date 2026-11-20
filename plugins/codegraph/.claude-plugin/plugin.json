@@ -1,0 +1,26 @@
+{
+  "name": "codegraph",
+  "version": "1.0.0",
+  "description": "Local-first semantic code intelligence over MCP (@colbymchenry/codegraph@latest) — surgical context, call paths, and blast-radius analysis across 30+ languages.",
+  "author": {
+    "name": "qwang07",
+    "url": "https://github.com/qwang07"
+  },
+  "homepage": "https://colbymchenry.github.io/codegraph/",
+  "repository": "https://github.com/qwang07/plugins",
+  "license": "MIT",
+  "keywords": [
+    "codegraph",
+    "code-intelligence",
+    "knowledge-graph",
+    "mcp",
+    "ast",
+    "tree-sitter"
+  ],
+  "mcpServers": {
+    "codegraph": {
+      "command": "npx",
+      "args": ["-y", "@colbymchenry/codegraph@latest", "serve", "--mcp"]
+    }
+  }
+}

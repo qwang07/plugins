@@ -1,0 +1,17 @@
+{
+  "name": "codegraph",
+  "displayName": "CodeGraph",
+  "version": "1.0.0",
+  "description": "Local-first semantic code intelligence over MCP (@colbymchenry/codegraph@latest) — surgical context, call paths, and blast-radius analysis across 30+ languages.",
+  "author": {
+    "name": "qwang07",
+    "url": "https://github.com/qwang07"
+  },
+  "homepage": "https://colbymchenry.github.io/codegraph/",
+  "repository": "https://github.com/qwang07/plugins",
+  "suggestedPrompts": [
+    "Initialize a CodeGraph index for this project",
+    "Check CodeGraph index status and pending syncs",
+    "Find test files affected by my current git diff"
+  ]
+}

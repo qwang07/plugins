@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
   "name": "qwang07",
-  "description": "qwang07 的插件集：WeCom MCP 工具、Archify 交互架构与流程图",
+  "description": "qwang07 的插件集：WeCom MCP 工具、Archify 交互架构与流程图、CodeGraph 本地语义代码图谱",
   "owner": {
     "name": "qwang07",
     "email": "github@quan-wang.me",
@@ -53,6 +53,28 @@
         "visualization"
       ],
       "displayName": "Archify",
+      "category": "development"
+    },
+    {
+      "name": "codegraph",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/qwang07/plugins.git",
+        "path": "plugins/codegraph"
+      },
+      "description": "Local-first semantic code intelligence over MCP (@colbymchenry/codegraph@latest) — surgical context, call paths, and blast-radius analysis across 30+ languages, paired with an on-demand CLI skill.",
+      "homepage": "https://colbymchenry.github.io/codegraph/",
+      "repository": "https://github.com/qwang07/plugins",
+      "license": "MIT",
+      "keywords": [
+        "codegraph",
+        "code-intelligence",
+        "knowledge-graph",
+        "mcp",
+        "ast",
+        "tree-sitter"
+      ],
+      "displayName": "CodeGraph",
       "category": "development"
     }
   ]

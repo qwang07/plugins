@@ -68,6 +68,30 @@
       },
       "category": "Productivity",
       "description": "Project goals, deliverables, and live progress in an MCP Apps panel."
+    },
+    {
+      "name": "codegraph",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/qwang07/plugins.git",
+        "path": "plugins/codegraph"
+      },
+      "description": "Local-first semantic code intelligence over MCP (@colbymchenry/codegraph@latest) — surgical context, call paths, and blast-radius analysis across 30+ languages, paired with an on-demand CLI skill.",
+      "homepage": "https://colbymchenry.github.io/codegraph/",
+      "repository": "https://github.com/qwang07/plugins",
+      "license": "MIT",
+      "keywords": [
+        "codegraph",
+        "code-intelligence",
+        "knowledge-graph",
+        "mcp",
+        "ast",
+        "tree-sitter"
+      ],
+      "policy": {
+        "installation": "AVAILABLE"
+      },
+      "category": "Developer Tools"
     }
   ]
 }
