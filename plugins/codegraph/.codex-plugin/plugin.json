@@ -1,6 +1,6 @@
 {
   "name": "codegraph",
-  "version": "1.6.3",
+  "version": "1.6.4",
   "description": "Local-first semantic code intelligence over MCP (@colbymchenry/codegraph@latest) — surgical context, call paths, and blast-radius analysis across 30+ languages.",
   "author": {
     "name": "qwang07",
@@ -21,7 +21,12 @@
   "mcpServers": {
     "codegraph": {
       "command": "npx",
-      "args": ["-y", "@colbymchenry/codegraph@latest", "serve", "--mcp"]
+      "args": [
+        "-y",
+        "@colbymchenry/codegraph@latest",
+        "serve",
+        "--mcp"
+      ]
     }
   },
   "interface": {
@@ -30,7 +35,9 @@
     "longDescription": "Wraps @colbymchenry/codegraph@latest as an always-latest stdio MCP server exposing codegraph_explore, paired with an on-demand CLI skill for project indexing, status, affected tests, and codegraph.json configuration.",
     "developerName": "qwang07",
     "category": "Developer Tools",
-    "capabilities": ["Read"],
+    "capabilities": [
+      "Read"
+    ],
     "websiteURL": "https://colbymchenry.github.io/codegraph/",
     "defaultPrompt": [
       "Initialize a CodeGraph index for this project",

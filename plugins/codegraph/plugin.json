@@ -1,7 +1,7 @@
 {
   "name": "codegraph",
   "displayName": "CodeGraph",
-  "version": "1.6.3",
+  "version": "1.6.4",
   "description": "Local-first semantic code intelligence over MCP (@colbymchenry/codegraph@latest) — surgical context, call paths, and blast-radius analysis across 30+ languages.",
   "author": {
     "name": "qwang07",
