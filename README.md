@@ -12,6 +12,7 @@ A plugin marketplace for [Claude Code](https://claude.com/claude-code), [Codex](
 /plugin install archify@qwang07
 /plugin install codegraph@qwang07
 /plugin install sealos@qwang07
+/plugin install memdex@qwang07
 ```
 
 ### Codex
@@ -23,6 +24,7 @@ codex plugin add archify@qwang07
 codex plugin add milestone@qwang07
 codex plugin add codegraph@qwang07
 codex plugin add sealos@qwang07
+codex plugin add memdex@qwang07
 ```
 
 Or run `/plugins` in the Codex CLI and install from the browser.
@@ -48,6 +50,13 @@ Run `git -C milestone-release pull --ff-only` to fetch updates, then replace the
 
 For CodeGraph, copy or symlink `plugins/codegraph` from this repository to `~/.gemini/config/plugins/codegraph` (or for Gemini CLI, link/install `plugins/codegraph` via its `gemini-extension.json`).
 
+For Memdex, clone the `plugin` branch and copy or symlink `plugins/memdex` into `~/.gemini/config/plugins/memdex`:
+
+```sh
+git clone --branch plugin --single-branch https://github.com/qwang07/memdex.git memdex-release
+ln -s "$(pwd)/memdex-release/plugins/memdex" ~/.gemini/config/plugins/memdex
+```
+
 ### 门客 (retinue)
 
 In 门客, open 设置 · 插件 · 市场, add the catalog `https://github.com/qwang07/plugins`, then install `todo` from it. 门客 also ships `todo` in its built-in catalog, so this entry is only needed to install it from source.
@@ -62,6 +71,7 @@ In 门客, open 设置 · 插件 · 市场, add the catalog `https://github.com/
 | `milestone` | Project goals, deliverables, and live progress for Codex and Antigravity | [Milestone packages](https://github.com/qwang07/milestone-mod/tree/plugin/plugins/milestone) |
 | `codegraph` | Local-first semantic code intelligence over MCP (`@colbymchenry/codegraph@latest`) plus CLI index/impact skill for Claude Code, Codex, Antigravity, and Gemini CLI | [plugins/codegraph](https://github.com/qwang07/plugins/tree/main/plugins/codegraph) |
 | `sealos` | Deploy and operate Sealos Cloud apps, managed databases, and S3-compatible object storage via interactive and Brain managed skills | [labring/sealos-skills](https://github.com/labring/sealos-skills/tree/main/plugins/sealos) |
+| `memdex` | Local-first cross-project conversation memory — SessionStart index, incremental Stop-hook sync, Chinese/English MCP recall, and manual Dream review | [qwang07/memdex](https://github.com/qwang07/memdex/tree/plugin/plugins/memdex) |
 
 ### Credentials
 
@@ -75,6 +85,8 @@ In 门客, open 设置 · 插件 · 市场, add the catalog `https://github.com/
 `codegraph` needs no credentials; it requires Node.js (`npx`) and runs `npx -y @colbymchenry/codegraph@latest serve --mcp` so the MCP server tracks the latest upstream npm release without version pinning. Run `npx -y @colbymchenry/codegraph@latest init` inside each project you want indexed.
 
 `sealos` tracks [`labring/sealos-skills`](https://github.com/labring/sealos-skills) directly via `git-subdir` (`plugins/sealos`), using the upstream repository's own `plugin.json` version. Authentication uses `~/.sealos/kubeconfig` via the `use-sealos` sign-in flow.
+
+`memdex` needs no credentials; it requires Node.js 22.5+ (uses built-in `node:sqlite`). All hosts share one local store under `~/.memdex` (override with `MEMDEX_HOME`). The generated `plugin` branch bundles the CLI, MCP server, and hooks into `bin/memdex.mjs`, so no `npm install` is needed.
 
 ## Why three catalog files
 

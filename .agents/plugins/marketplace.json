@@ -116,6 +116,31 @@
         "installation": "AVAILABLE"
       },
       "category": "Coding"
+    },
+    {
+      "name": "memdex",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/qwang07/memdex.git",
+        "path": "plugins/memdex",
+        "ref": "plugin"
+      },
+      "description": "Local-first cross-project conversation memory: SessionStart memory index, incremental Stop-hook syncing, and Chinese/English MCP recall over SQLite FTS5.",
+      "homepage": "https://github.com/qwang07/memdex#readme",
+      "repository": "https://github.com/qwang07/memdex",
+      "license": "MIT",
+      "keywords": [
+        "memory",
+        "recall",
+        "mcp",
+        "sqlite",
+        "fts5",
+        "conversations"
+      ],
+      "policy": {
+        "installation": "AVAILABLE"
+      },
+      "category": "Productivity"
     }
   ]
 }

@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
   "name": "qwang07",
-  "description": "qwang07 的插件集：WeCom MCP 工具、Archify 交互架构与流程图、CodeGraph 本地语义代码图谱、Sealos Cloud 部署运维",
+  "description": "qwang07 的插件集：WeCom MCP 工具、Archify 交互架构与流程图、CodeGraph 本地语义代码图谱、Sealos Cloud 部署运维、Memdex 跨项目本地记忆",
   "owner": {
     "name": "qwang07",
     "email": "github@quan-wang.me",
@@ -98,6 +98,29 @@
       ],
       "displayName": "Sealos",
       "category": "deployment"
+    },
+    {
+      "name": "memdex",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/qwang07/memdex.git",
+        "path": "plugins/memdex",
+        "ref": "plugin"
+      },
+      "description": "Local-first cross-project conversation memory: SessionStart memory index, incremental Stop-hook syncing, and Chinese/English MCP recall over SQLite FTS5.",
+      "homepage": "https://github.com/qwang07/memdex#readme",
+      "repository": "https://github.com/qwang07/memdex",
+      "license": "MIT",
+      "keywords": [
+        "memory",
+        "recall",
+        "mcp",
+        "sqlite",
+        "fts5",
+        "conversations"
+      ],
+      "displayName": "Memdex",
+      "category": "productivity"
     }
   ]
 }
