@@ -87,7 +87,7 @@ In 门客, open 设置 · 插件 · 市场, add the catalog `https://github.com/
 
 `sealos` tracks [`labring/sealos-skills`](https://github.com/labring/sealos-skills) directly via `git-subdir` (`plugins/sealos`), using the upstream repository's own `plugin.json` version. Authentication uses `~/.sealos/kubeconfig` via the `use-sealos` sign-in flow.
 
-`memdex` needs no credentials; it requires Node.js 22.5+ (uses built-in `node:sqlite`). All hosts share one local store under `~/.memdex` (override with `MEMDEX_HOME`). The generated `plugin` branch bundles the CLI, MCP server, and hooks into `bin/memdex.mjs`, so no `npm install` is needed.
+`memdex` needs no credentials; it requires Node.js 22.5+ (uses built-in `node:sqlite`). All hosts share one local store under `~/.memdex` (override with `MEMDEX_HOME`). The generated `plugin` branch bundles the CLI, MCP server, and hooks into `dist/memdex.mjs`, so no `npm install` is needed.
 
 ## Why three catalog files
 
