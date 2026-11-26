@@ -67,7 +67,7 @@
         "installation": "AVAILABLE"
       },
       "category": "Productivity",
-      "description": "Project goals, deliverables, and live progress in an MCP Apps panel."
+      "description": "Project goals, deliverables, and live progress in a panel beside the conversation."
     },
     {
       "name": "codegraph",

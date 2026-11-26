@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
   "name": "qwang07",
-  "description": "qwang07 的插件集：WeCom MCP 工具、Archify 交互架构与流程图、CodeGraph 本地语义代码图谱、Sealos Cloud 部署运维、Memdex 跨项目本地记忆",
+  "description": "qwang07 的插件集：WeCom MCP 工具、Archify 交互架构与流程图、Milestone 项目目标与进度面板、CodeGraph 本地语义代码图谱、Sealos Cloud 部署运维、Memdex 跨项目本地记忆",
   "owner": {
     "name": "qwang07",
     "email": "github@quan-wang.me",
@@ -54,6 +54,18 @@
       ],
       "displayName": "Archify",
       "category": "development"
+    },
+    {
+      "name": "milestone",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/qwang07/milestone-mod.git",
+        "path": "plugins/milestone/claude",
+        "ref": "plugin"
+      },
+      "displayName": "Milestone",
+      "description": "Project goals, deliverables, and live progress in a panel beside the conversation.",
+      "category": "productivity"
     },
     {
       "name": "codegraph",

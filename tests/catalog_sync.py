@@ -32,6 +32,9 @@ SHARED = ["description", "homepage", "repository", "license", "keywords", "sourc
 # 例外不是豁免——枚举内仍须满足：除末句外逐句相同（功能描述共享，仅末句可分岔），
 # 且必须**真的不同**（相同则例外已失效，应从枚举删除，防止例外清单沦为万能挡箭牌）。
 DESC_MAY_DIFFER = {"wecom": "凭据获取方式按客户端不同（keychain 提示 vs 环境变量）"}
+# source 的**显式例外**：同一仓库、同一 ref 下按客户端发布不同的包目录。
+# 例外内仍须 source/url/ref 相同，只许 path 不同，且必须真的不同。
+SOURCE_PATH_MAY_DIFFER = {"milestone": "Claude Code 与 Codex 各有一个包（plugins/milestone/claude、plugins/milestone/codex）"}
 # 客户端专属字段：允许只出现在一侧
 ONLY_CLAUDE = {"displayName"}
 ONLY_CODEX = {"policy"}
@@ -68,7 +71,7 @@ rp = {p["name"]: p for p in r.get("plugins", [])}
 both = sorted(set(cp) & set(xp))
 
 # C1 保持共享插件同步，并显式列出只面向 Codex 的条目。
-CODEX_ONLY = {"milestone"}
+CODEX_ONLY = set()
 check("C1 Claude 和 Codex 编目符合客户端支持范围",
       set(cp) <= set(xp) and set(xp) - set(cp) == CODEX_ONLY,
       f"仅 Claude 侧有 {sorted(set(cp) - set(xp))}；仅 Codex 侧有 {sorted(set(xp) - set(cp))}")
@@ -79,7 +82,8 @@ def sentences(s):
 
 # C2 共享字段逐字一致（description 的例外单独判，见 C2b）
 for n in both:
-    fields = [f for f in SHARED if not (f == "description" and n in DESC_MAY_DIFFER)]
+    fields = [f for f in SHARED if not (f == "description" and n in DESC_MAY_DIFFER)
+              and not (f == "source" and n in SOURCE_PATH_MAY_DIFFER)]
     diff = [f for f in fields if cp[n].get(f) != xp[n].get(f)]
     check(f"C2 {n} 共享字段逐字一致", not diff, f"不一致字段 {diff}——手工同步漏改一份")
 
@@ -91,6 +95,16 @@ for n in sorted(set(DESC_MAY_DIFFER) & set(both)):
     sc, sx = sentences(dc), sentences(dx)
     check(f"C2b {n} description 仅末句分岔", sc[:-1] == sx[:-1],
           f"末句之外也不同：Claude 侧 {sc[:-1]} / Codex 侧 {sx[:-1]}——功能描述必须共享")
+
+# C2d source 例外：只许 path 分岔
+for n in sorted(set(SOURCE_PATH_MAY_DIFFER) & set(both)):
+    sc, sx = dict(cp[n].get("source") or {}), dict(xp[n].get("source") or {})
+    check(f"C2d {n} source 例外仍在使用", sc.get("path") != sx.get("path"),
+          "两侧 path 已相同——例外失效，请从 SOURCE_PATH_MAY_DIFFER 删除")
+    sc.pop("path", None); sx.pop("path", None)
+    check(f"C2d {n} source 仅 path 分岔", sc == sx, f"path 之外也不同：Claude 侧 {sc} / Codex 侧 {sx}")
+check("C2d source 例外枚举无陈旧条目", set(SOURCE_PATH_MAY_DIFFER) <= set(both),
+      f"枚举中的 {sorted(set(SOURCE_PATH_MAY_DIFFER) - set(both))} 已不在编目里")
 
 # C2c 例外枚举不得越界：枚举里不存在的插件名 = 陈旧条目
 check("C2c description 例外枚举无陈旧条目", set(DESC_MAY_DIFFER) <= set(both),
@@ -123,7 +137,8 @@ for n in sorted(rp):
 
 # R2 与另两份同名的插件：共享字段逐字一致（description 例外同 C2）
 for n in sorted(set(rp) & set(cp)):
-    fields = [f for f in SHARED if not (f == "description" and n in DESC_MAY_DIFFER)]
+    fields = [f for f in SHARED if not (f == "description" and n in DESC_MAY_DIFFER)
+              and not (f == "source" and n in SOURCE_PATH_MAY_DIFFER)]
     diff = [f for f in fields if rp[n].get(f) != cp[n].get(f)]
     check(f"R2 {n} 门客编目与 Claude 编目共享字段逐字一致", not diff, f"不一致字段 {diff}")
 

@@ -1,6 +1,6 @@
 # qwang07's plugins
 
-A plugin marketplace for [Claude Code](https://claude.com/claude-code), [Codex](https://developers.openai.com/codex), and [门客 (retinue)](https://github.com/qwang07/retinue). The catalog links to the plugin repositories. Milestone publishes both installable bundles on its [`plugin` branch](https://github.com/qwang07/milestone-mod/tree/plugin/plugins/milestone).
+A plugin marketplace for [Claude Code](https://claude.com/claude-code), [Codex](https://developers.openai.com/codex), and [门客 (retinue)](https://github.com/qwang07/retinue). The catalog links to the plugin repositories. Milestone publishes its Claude Code, Codex and Antigravity bundles on its [`plugin` branch](https://github.com/qwang07/milestone-mod/tree/plugin/plugins/milestone).
 
 ## Install
 
@@ -10,6 +10,7 @@ A plugin marketplace for [Claude Code](https://claude.com/claude-code), [Codex](
 /plugin marketplace add qwang07/plugins
 /plugin install wecom@qwang07
 /plugin install archify@qwang07
+/plugin install milestone@qwang07
 /plugin install codegraph@qwang07
 /plugin install sealos@qwang07
 /plugin install memdex@qwang07
@@ -68,7 +69,7 @@ In 门客, open 设置 · 插件 · 市场, add the catalog `https://github.com/
 | `wecom` | 79 WeCom (企业微信) tools, 8 resources, 3 prompts — Contact, Approval, Drive, Doc/Smartsheet/Form over MCP | [qwang07/wecom-mcp](https://github.com/qwang07/wecom-mcp) |
 | `todo` | 门客的待办清单：门客做多步的活时列出清单，侧边面板画清单，名录状态位显示进度（门客 only） | [qwang07/retinue](https://github.com/qwang07/retinue/tree/main/plugins/todo) |
 | `archify` | Interactive architecture and workflow diagrams, sequence diagrams and source-backed explainers; upstream skill synced daily | [qwang07/archify](https://github.com/qwang07/archify/tree/plugin/plugins/archify) |
-| `milestone` | Project goals, deliverables, and live progress for Codex and Antigravity | [Milestone packages](https://github.com/qwang07/milestone-mod/tree/plugin/plugins/milestone) |
+| `milestone` | Project goals, deliverables, and live progress for Claude Code, Codex and Antigravity | [Milestone packages](https://github.com/qwang07/milestone-mod/tree/plugin/plugins/milestone) |
 | `codegraph` | Local-first semantic code intelligence over MCP (`@colbymchenry/codegraph@latest`) plus CLI index/impact skill for Claude Code, Codex, Antigravity, and Gemini CLI | [plugins/codegraph](https://github.com/qwang07/plugins/tree/main/plugins/codegraph) |
 | `sealos` | Deploy and operate Sealos Cloud apps, managed databases, and S3-compatible object storage via interactive and Brain managed skills | [labring/sealos-skills](https://github.com/labring/sealos-skills/tree/main/plugins/sealos) |
 | `memdex` | Local-first cross-project conversation memory — SessionStart index, incremental Stop-hook sync, Chinese/English MCP recall, and manual Dream review | [qwang07/memdex](https://github.com/qwang07/memdex/tree/plugin/plugins/memdex) |
@@ -98,9 +99,9 @@ Each client discovers a marketplace by scanning fixed paths, and their lists dif
 | Codex | `.agents/plugins/marketplace.json` | ranks above `.claude-plugin/`, so Codex reads this one and never sees the other |
 | 门客 | `.retinue-plugin/marketplace.json` | the only path it reads; lists only plugins that carry a 门客 manifest (`.retinue-plugin/plugin.json`), and only `git-subdir` sources |
 
-Because Codex stops at the first match, its catalog has to carry the full plugin list on its own. Keep fields shared by Claude Code and Codex in sync. The Codex catalog also lists Milestone. The 门客 file may list a different set of plugins; a plugin it shares with the other two must carry the same shared fields. `tests/catalog_sync.py` checks all three against each other and against the table above.
+Because Codex stops at the first match, its catalog has to carry the full plugin list on its own. Keep fields shared by Claude Code and Codex in sync. Milestone's two catalog entries point at different package folders of the same `plugin` branch (`plugins/milestone/claude` and `plugins/milestone/codex`); that is the only allowed difference in its `source`. The 门客 file may list a different set of plugins; a plugin it shares with the other two must carry the same shared fields. `tests/catalog_sync.py` checks all three against each other and against the table above.
 
-Each plugin's own `plugin.json` declares its version. Publish both Milestone packages to the `plugin` branch of `qwang07/milestone-mod` when releasing a new version.
+Each plugin's own `plugin.json` declares its version. Publish the Milestone packages to the `plugin` branch of `qwang07/milestone-mod` when releasing a new version.
 
 ## License
 
